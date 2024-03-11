@@ -1,0 +1,25 @@
+package com.wind.yrpc.consumer;
+
+import com.wind.yrpc.common.model.User;
+import com.wind.yrpc.common.service.UserService;
+
+/**
+ * 简易版的消费者示例
+ *
+ * @author wind
+ */
+public class YRpcConsumer {
+    public static void main(String[] args) {
+        // 静态代理
+        UserService userService = new UserServiceProxy();
+        User user = new User();
+        user.setUsername("wind");
+        // 调用
+        User resUser = userService.getUser(user);
+        if (resUser != null) {
+            System.out.println(resUser.getUsername());
+        } else {
+            System.out.println("user == null");
+        }
+    }
+}
