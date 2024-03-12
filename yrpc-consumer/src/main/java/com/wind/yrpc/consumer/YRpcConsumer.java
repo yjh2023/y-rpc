@@ -2,6 +2,7 @@ package com.wind.yrpc.consumer;
 
 import com.wind.yrpc.common.model.User;
 import com.wind.yrpc.common.service.UserService;
+import com.wind.yrpc.proxy.ServiceProxyFactory;
 
 /**
  * 简易版的消费者示例
@@ -11,7 +12,10 @@ import com.wind.yrpc.common.service.UserService;
 public class YRpcConsumer {
     public static void main(String[] args) {
         // 静态代理
-        UserService userService = new UserServiceProxy();
+//        UserService userService = new UserServiceProxy();
+
+        // 动态代理
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setUsername("wind");
         // 调用
