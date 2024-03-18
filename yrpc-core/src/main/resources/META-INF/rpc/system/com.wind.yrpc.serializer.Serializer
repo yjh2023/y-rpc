@@ -1,0 +1,2 @@
+jdk=com.wind.yrpc.serializer.JdkSerializer
+hessian=com.wind.yrpc.serializer.HessianSerializer

@@ -1,0 +1,2 @@
+json=com.wind.yrpc.serializer.JsonSerializer
+kryo=com.wind.yrpc.serializer.KryoSerializer

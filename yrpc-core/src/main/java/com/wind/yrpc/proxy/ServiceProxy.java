@@ -2,10 +2,12 @@ package com.wind.yrpc.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.wind.yrpc.RpcApplication;
 import com.wind.yrpc.model.RpcRequest;
 import com.wind.yrpc.model.RpcResponse;
 import com.wind.yrpc.serializer.JdkSerializer;
 import com.wind.yrpc.serializer.Serializer;
+import com.wind.yrpc.serializer.SerializerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
@@ -25,7 +27,7 @@ public class ServiceProxy implements InvocationHandler {
      */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 指定一个序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
         // 构建 RPC 请求
         RpcRequest rpcRequest = RpcRequest.builder()
                 .serviceName(method.getDeclaringClass().getName())
